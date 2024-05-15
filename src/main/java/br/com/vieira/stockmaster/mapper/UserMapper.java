@@ -5,7 +5,6 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import br.com.vieira.stockmaster.model.AccessLevel;
 import br.com.vieira.stockmaster.model.User;
 
 public class UserMapper implements RowMapper<User> {
@@ -18,10 +17,7 @@ public class UserMapper implements RowMapper<User> {
 		user.setName(rs.getString("user_name"));
 		user.setEmail(rs.getString("user_email"));
 		user.setPassword(rs.getString("user_password"));
-		
-        AccessLevel accessLevel = new AccessLevel();
-        accessLevel.setId(rs.getInt("access_level_id_fk"));
-        user.setAccessLevel(accessLevel);
+        user.setAccessLevel(rs.getInt("access_level_id_fk"), rs.getString("access_level"));
 
 		return user;
 	}
