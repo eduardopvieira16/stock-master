@@ -11,6 +11,8 @@ public class User {
 	public User() {
 	}
 
+	/*Up branch dev */
+
 	public User(Long id, String name, String email, String password, AccessLevel accessLevel) {
 		super();
 		this.id = id;
