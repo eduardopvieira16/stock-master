@@ -11,7 +11,7 @@ public interface AccessLevelDao {
 
 	List<AccessLevel> listByNameAccessLevel(String accessLevel);
 
-	AccessLevel searchByCodeAccessLevel(Integer code);
+	AccessLevel searchByCodeAccessLevel(Integer id);
 
 	/* Create - Update - Delete */
 	AccessLevel createAccessLevel(AccessLevel accessLevel);

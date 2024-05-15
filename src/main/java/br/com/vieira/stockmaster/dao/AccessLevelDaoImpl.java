@@ -32,9 +32,9 @@ public class AccessLevelDaoImpl implements AccessLevelDao {
     }
 
     @Override
-    public AccessLevel searchByCodeAccessLevel(Integer code) {
+    public AccessLevel searchByCodeAccessLevel(Integer id) {
         String searchByCode = "SELECT * FROM access_level WHERE access_level_id = ?";
-        return jdbcTemplate.queryForObject(searchByCode, new AccessLevelMapper(), code);
+        return jdbcTemplate.queryForObject(searchByCode, new AccessLevelMapper(), id);
     }
 
     @Override

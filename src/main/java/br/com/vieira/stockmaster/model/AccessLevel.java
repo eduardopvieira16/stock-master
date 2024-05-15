@@ -15,7 +15,6 @@ public class AccessLevel {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "access_level_id")
 	private Integer id;
-
 	@Column(name = "access_level")
 	private String level;
 
@@ -23,6 +22,13 @@ public class AccessLevel {
 	}
 
 	public AccessLevel(String level) {
+		super();
+		this.level = level;
+	}
+
+	public AccessLevel(Integer id, String level) {
+		super();
+		this.id = id;
 		this.level = level;
 	}
 
@@ -40,5 +46,10 @@ public class AccessLevel {
 
 	public void setLevel(String level) {
 		this.level = level;
+	}
+
+	@Override
+	public String toString() {
+		return "AccessLevel [id=" + id + ", level=" + level + "]";
 	}
 }
