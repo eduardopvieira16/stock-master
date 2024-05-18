@@ -2,8 +2,6 @@ package br.com.vieira.stockmaster.controller;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,52 +26,52 @@ public class AccessLevelRestController {
     }
 
     @GetMapping(path = "/list/all")
-    public ResponseEntity<List<AccessLevel>> listAllAccessLevels() {
+    public List<AccessLevel> listAllAccessLevels() {
         try {
-            List<AccessLevel> accessLevels = accessLevelService.listAll();
-            return new ResponseEntity<>(accessLevels, HttpStatus.OK);
+        	return accessLevelService.listAll();
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            e.printStackTrace();
+            return null;
         }
     }
 
     @GetMapping(path = "/list/name/{access_level}")
-    public ResponseEntity<List<AccessLevel>> listByNameAccessLevels(@PathVariable("access_level") String accessLevel) {
+    public List<AccessLevel> listByNameAccessLevels(@PathVariable("access_level") String accessLevel) {
         try {
-            List<AccessLevel> accessLevels = accessLevelService.listByName(accessLevel);
-            return new ResponseEntity<>(accessLevels, HttpStatus.OK);
+        	return accessLevelService.listByName(accessLevel);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            e.printStackTrace();
+        	return null;
         }
     }
 
     @GetMapping(path = "/search/{id}")
-    public ResponseEntity<AccessLevel> searchByCodeLevel(@PathVariable("id") Integer id) {
+    public AccessLevel searchByCodeLevel(@PathVariable("id") Integer id) {
         try {
-            AccessLevel accessLevel = accessLevelService.searchByCode(id);
-            return new ResponseEntity<>(accessLevel, HttpStatus.OK);
+        	return accessLevelService.searchByCode(id);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            e.printStackTrace();
+        	return null;
         }
     }
 
     @PostMapping
-    public ResponseEntity<AccessLevel> saveAccessLevel(@RequestBody AccessLevel accessLevel) {
+    public AccessLevel saveAccessLevel(@RequestBody AccessLevel accessLevel) {
         try {
-            AccessLevel savedAccessLevel = accessLevelService.saveAccess(accessLevel);
-            return new ResponseEntity<>(savedAccessLevel, HttpStatus.CREATED);
+        	return accessLevelService.saveAccess(accessLevel);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            e.printStackTrace();
+        	return null;
         }
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public ResponseEntity<Void> deleteAccessLevel(@PathVariable("id") Integer id) {
+    public AccessLevel deleteAccessLevel(@PathVariable("id") Integer id) {
         try {
-            accessLevelService.deleteAccessLevel(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        	return accessLevelService.deleteAccessLevel(id);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            e.printStackTrace();
+        	return null;
         }
     }
 }

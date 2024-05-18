@@ -53,11 +53,11 @@ public class AccessLevelDaoImpl implements AccessLevelDao {
 
     @Override
     public AccessLevel deleteAccessLevel(Integer id) {
-        String deleteAccess = "SELECT * FROM access_level WHERE access_level_id = ?";
-        AccessLevel toDelete = jdbcTemplate.queryForObject(deleteAccess, new AccessLevelMapper(), id);
+        String selectAccess = "SELECT * FROM access_level WHERE access_level_id = ?";
+        AccessLevel toDelete = jdbcTemplate.queryForObject(selectAccess, new AccessLevelMapper(), id);
         if (toDelete != null) {
-            String deleteSql = "DELETE FROM access_level WHERE access_level_id = ?";
-            jdbcTemplate.update(deleteSql, id);
+            String deleteAccessLevel = "DELETE FROM access_level WHERE access_level_id = ?";
+            jdbcTemplate.update(deleteAccessLevel, id);
             return toDelete;
         }
         return null;
