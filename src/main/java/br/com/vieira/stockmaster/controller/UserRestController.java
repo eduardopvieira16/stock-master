@@ -2,8 +2,6 @@ package br.com.vieira.stockmaster.controller;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,52 +26,52 @@ public class UserRestController {
     }
 
     @GetMapping(path = "/list/all")
-    public ResponseEntity<List<User>> listAllAccessLevels() {
+    public List<User> listAllUsers() {
         try {
-            List<User> users = userService.listAll();
-            return new ResponseEntity<>(users, HttpStatus.OK);
+        	return userService.listAll();
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            e.printStackTrace();
+            return null;
         }
     }
 
-    @GetMapping(path = "/list/name/{user_name}")
-    public ResponseEntity<List<User>> listByNameAccessLevels(@PathVariable("user_name") String user) {
+    @GetMapping(path = "/list/name/{user}")
+    public List<User> listByNameUsers(@PathVariable("user") String user) {
         try {
-            List<User> users = userService.listByName(user);
-            return new ResponseEntity<>(users, HttpStatus.OK);
+        	return userService.listByName(user);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            e.printStackTrace();
+        	return null;
         }
     }
 
     @GetMapping(path = "/search/{id}")
-    public ResponseEntity<User> searchByCodeLevel(@PathVariable("id") Integer id) {
+    public User searchByCodeUser(@PathVariable("id") Integer id) {
         try {
-            User user = userService.searchByCode(id);
-            return new ResponseEntity<>(user, HttpStatus.OK);
+        	return userService.searchByCode(id);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            e.printStackTrace();
+        	return null;
         }
     }
 
     @PostMapping
-    public ResponseEntity<User> saveAccessLevel(@RequestBody User user) {
+    public User saveUser(@RequestBody User user) {
         try {
-            User savedAccessLevel = userService.saveUser(user);
-            return new ResponseEntity<>(savedAccessLevel, HttpStatus.CREATED);
+        	return userService.saveUser(user);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            e.printStackTrace();
+        	return null;
         }
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public ResponseEntity<Void> deleteAccessLevel(@PathVariable("id") Integer id) {
+    public User deleteUser(@PathVariable("id") Integer id) {
         try {
-            userService.deleteUser(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        	return userService.deleteUser(id);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            e.printStackTrace();
+        	return null;
         }
     }
 }

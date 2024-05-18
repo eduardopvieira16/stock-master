@@ -21,26 +21,26 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> listUser() {
-		String listAll = "SELECT * FROM users ORDER BY user_id asc";
+		String listAll = "SELECT * FROM users u LEFT JOIN access_level al ON u.access_level_id_fk = al.access_level_id ORDER BY u.user_id ASC";
 		return jdbcTemplate.query(listAll, new UserMapper());
 	}
 
 	@Override
 	public List<User> listByNameUser(String user) {
-		String listByName = "SELECT * FROM users WHERE user_name LIKE ?";
+		String listByName = "SELECT * FROM users u LEFT JOIN access_level al ON u.access_level_id_fk = al.access_level_id WHERE user_name LIKE ?";
 		return jdbcTemplate.query(listByName, new UserMapper(), "%" + user + "%");
 	}
 
 	@Override
 	public User searchByCodeUser(Integer id) {
-		String searchByCode = "SELECT * FROM users WHERE user_id = ?";
+		String searchByCode = "SELECT * FROM users u LEFT JOIN access_level al ON u.access_level_id_fk = al.access_level_id WHERE user_id = ?";
 		return jdbcTemplate.queryForObject(searchByCode, new UserMapper(), id);
 	}
 
 	@Override
 	public User createUser(User user) {
 		String createUser = "INSERT INTO users (access_level_id_fk, user_name, user_email, user_password) VALUES(?, ?, ?, ?)";
-		jdbcTemplate.update(createUser, user.getName(), user.getEmail(), user.getPassword(), user.getAccessLevel());
+		jdbcTemplate.update(createUser, user.getAccessLevel(), user.getName(), user.getEmail(), user.getPassword());
 		return user;
 	}
 
@@ -54,11 +54,11 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User deleteUser(Integer id) {
-		String deleteUser = "SELECT * FROM users WHERE user_id = ?";
-		User toDelete = jdbcTemplate.queryForObject(deleteUser, new UserMapper(), id);
+		String selectUser = "SELECT * FROM users WHERE user_id = ?";
+		User toDelete = jdbcTemplate.queryForObject(selectUser, new UserMapper(), id);
 		if (toDelete != null) {
-			String deleteSql = "DELETE FROM user WHERE user_id = ?";
-			jdbcTemplate.update(deleteSql, id);
+			String deleteUser = "DELETE FROM users WHERE user_id = ?";
+			jdbcTemplate.update(deleteUser, id);
 			return toDelete;
 		}
 		return null;

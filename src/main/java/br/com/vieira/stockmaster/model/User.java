@@ -11,8 +11,6 @@ public class User {
 	public User() {
 	}
 
-	/*Up branch dev */
-
 	public User(Long id, String name, String email, String password, AccessLevel accessLevel) {
 		super();
 		this.id = id;
@@ -58,11 +56,10 @@ public class User {
 		return accessLevel;
 	}
 
-	public void setAccessLevel(Integer id, String level) {
+	public void setAccessLevel(Integer id, String access) {
 		AccessLevel al = new AccessLevel();
 		al.setId(id);
-		al.setLevel(level);
-		
+		al.setLevel(access);
 		this.accessLevel = al;
 	}
 
