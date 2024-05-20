@@ -18,7 +18,6 @@ public class UserMapper implements RowMapper<User> {
 		user.setEmail(rs.getString("user_email"));
 		user.setPassword(rs.getString("user_password"));
 		user.setAccessLevel(rs.getInt("access_level_id_fk"),rs.getString("access_level"));
-
 		return user;
 	}
 

@@ -40,21 +40,23 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User createUser(User user) {
 		String createUser = "INSERT INTO users (access_level_id_fk, user_name, user_email, user_password) VALUES(?, ?, ?, ?)";
-		jdbcTemplate.update(createUser, user.getAccessLevel(), user.getName(), user.getEmail(), user.getPassword());
+		Integer accessLevelIdFk = user.getAccessLevel().getId();
+		jdbcTemplate.update(createUser, accessLevelIdFk, user.getName(), user.getEmail(), user.getPassword());
 		return user;
 	}
 
 	@Override
 	public User updateUser(User user) {
 		String updateUser = "UPDATE users SET access_level_id_fk = ?, user_name = ?, user_email = ?, user_password = ? WHERE user_id = ?";
-		jdbcTemplate.update(updateUser, user.getAccessLevel(), user.getName(), user.getEmail(), user.getPassword(),
+		Integer accessLevelIdFk = user.getAccessLevel().getId();
+		jdbcTemplate.update(updateUser, accessLevelIdFk, user.getName(), user.getEmail(), user.getPassword(),
 				user.getId());
 		return user;
 	}
 
 	@Override
 	public User deleteUser(Integer id) {
-		String selectUser = "SELECT * FROM users WHERE user_id = ?";
+		String selectUser = "SELECT * FROM users u LEFT JOIN access_level al ON u.access_level_id_fk = al.access_level_id WHERE user_id = ?";
 		User toDelete = jdbcTemplate.queryForObject(selectUser, new UserMapper(), id);
 		if (toDelete != null) {
 			String deleteUser = "DELETE FROM users WHERE user_id = ?";
