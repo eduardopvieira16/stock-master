@@ -11,7 +11,7 @@ public interface UserDao {
 
 	List<User> listByNameUser(String user);
 
-	User searchByCodeUser(Integer code);
+	User searchByCodeUser(Integer id);
 
 	/* Create - Update - Delete */
 	User createUser(User user);
