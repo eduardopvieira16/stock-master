@@ -15,12 +15,15 @@ public class Product {
 	private Long minimumStock;
 	private Timestamp createdAt;
 	private Timestamp updateAt;
+	private Supplier supplier;
+	private Category category;
 
 	public Product() {
 	}
 
 	public Product(Long id, String product, String description, Double costPrice, Double salePrice, String unitMeasure,
-			String image, Long currentStock, Long minimumStock, Timestamp createdAt, Timestamp updateAt) {
+			String image, Long currentStock, Long minimumStock, Timestamp createdAt, Timestamp updateAt,
+			Supplier supplier, Category category) {
 		super();
 		this.id = id;
 		this.product = product;
@@ -33,6 +36,8 @@ public class Product {
 		this.minimumStock = minimumStock;
 		this.createdAt = createdAt;
 		this.updateAt = updateAt;
+		this.supplier = supplier;
+		this.category = category;
 	}
 
 	public Long getId() {
@@ -123,11 +128,36 @@ public class Product {
 		this.updateAt = updateAt;
 	}
 
+	public Supplier getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(Long id, String supplier, String taxId, String email) {
+		Supplier sup = new Supplier();
+		sup.setId(id);
+		sup.setSupplier(supplier);
+		sup.setTaxId(taxId);
+		sup.setEmail(email);
+		this.supplier = sup;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Long id, String category) {
+		Category cat = new Category();
+		cat.setId(id);
+		cat.setCategory(category);
+		this.category = cat;
+	}
+
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", product=" + product + ", description=" + description + ", costPrice="
 				+ costPrice + ", salePrice=" + salePrice + ", unitMeasure=" + unitMeasure + ", image=" + image
 				+ ", currentStock=" + currentStock + ", minimumStock=" + minimumStock + ", createdAt=" + createdAt
-				+ ", updateAt=" + updateAt + "]";
+				+ ", updateAt=" + updateAt + ", supplier=" + supplier + ", category=" + category + "]";
 	}
+
 }
