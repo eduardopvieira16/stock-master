@@ -9,7 +9,6 @@ public class AccessLevel {
 	}
 
 	public AccessLevel(String level) {
-		super();
 		this.level = level;
 	}
 

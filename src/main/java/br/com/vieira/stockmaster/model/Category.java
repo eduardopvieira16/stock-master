@@ -13,7 +13,6 @@ public class Category {
 	}
 
 	public Category(Long id, String category, Timestamp createdAt, Timestamp updateAt) {
-		super();
 		this.id = id;
 		this.category = category;
 		this.createdAt = createdAt;
