@@ -12,10 +12,8 @@ public class AccessLevelMapper implements RowMapper<AccessLevel> {
     @Override
     public AccessLevel mapRow(ResultSet rs, int rowNum) throws SQLException {
         AccessLevel accessLevel = new AccessLevel();
-
         accessLevel.setId(rs.getInt("access_level_id"));
         accessLevel.setLevel(rs.getString("access_level"));
-
         return accessLevel;
     }
 }

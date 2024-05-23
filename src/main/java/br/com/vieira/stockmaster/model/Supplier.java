@@ -1,7 +1,5 @@
 package br.com.vieira.stockmaster.model;
 
-import java.sql.Timestamp;
-
 public class Supplier {
 
 	private Long id;
@@ -16,15 +14,12 @@ public class Supplier {
 	private String neighborhood;
 	private String city;
 	private String uf;
-	private Timestamp createdAt;
-	private Timestamp updateAt;
 
 	public Supplier() {
 	}
 
 	public Supplier(Long id, String supplier, String taxId, String email, String phone, String celPhone, String cep,
-			String address, String numberAddress, String neighborhood, String city, String uf, Timestamp createdAt,
-			Timestamp updateAt) {
+			String address, String numberAddress, String neighborhood, String city, String uf) {
 		this.id = id;
 		this.supplier = supplier;
 		this.taxId = taxId;
@@ -37,8 +32,6 @@ public class Supplier {
 		this.neighborhood = neighborhood;
 		this.city = city;
 		this.uf = uf;
-		this.createdAt = createdAt;
-		this.updateAt = updateAt;
 	}
 
 	public Long getId() {
@@ -135,30 +128,6 @@ public class Supplier {
 
 	public void setUf(String uf) {
 		this.uf = uf;
-	}
-
-	public Timestamp getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Timestamp createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Timestamp getUpdateAt() {
-		return updateAt;
-	}
-
-	public void setUpdateAt(Timestamp updateAt) {
-		this.updateAt = updateAt;
-	}
-
-	@Override
-	public String toString() {
-		return "Supplier [id=" + id + ", supplier=" + supplier + ", taxId=" + taxId + ", email=" + email + ", phone="
-				+ phone + ", celPhone=" + celPhone + ", cep=" + cep + ", address=" + address + ", numberAddress="
-				+ numberAddress + ", neighborhood=" + neighborhood + ", city=" + city + ", uf=" + uf + ", createdAt="
-				+ createdAt + ", updateAt=" + updateAt + "]";
 	}
 
 }

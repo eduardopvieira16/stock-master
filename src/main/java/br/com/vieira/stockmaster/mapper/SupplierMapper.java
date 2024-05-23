@@ -12,7 +12,6 @@ public class SupplierMapper implements RowMapper<Supplier> {
 	@Override
 	public Supplier mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Supplier supplier = new Supplier();
-
 		supplier.setId(rs.getLong("supplier_id"));
 		supplier.setSupplier(rs.getString("supplier_name"));
 		supplier.setTaxId(rs.getString("tax_id"));
@@ -25,8 +24,6 @@ public class SupplierMapper implements RowMapper<Supplier> {
 		supplier.setNeighborhood(rs.getString("neighborhood"));
 		supplier.setCity(rs.getString("city"));
 		supplier.setUf(rs.getString("uf"));
-		supplier.setCreatedAt(rs.getTimestamp("created_at"));
-		supplier.setUpdateAt(rs.getTimestamp("update_at"));
 		return supplier;
 
 	}

@@ -1,6 +1,6 @@
 package br.com.vieira.stockmaster.model;
 
-import java.sql.Timestamp;
+import br.com.vieira.stockmaster.model.dto.SupplierDto;
 
 public class Product {
 
@@ -13,17 +13,14 @@ public class Product {
 	private String image;
 	private Long currentStock;
 	private Long minimumStock;
-	private Timestamp createdAt;
-	private Timestamp updateAt;
-	private Supplier supplier;
+	private SupplierDto supplier;
 	private Category category;
 
 	public Product() {
 	}
 
 	public Product(Long id, String product, String description, Double costPrice, Double salePrice, String unitMeasure,
-			String image, Long currentStock, Long minimumStock, Timestamp createdAt, Timestamp updateAt,
-			Supplier supplier, Category category) {
+			String image, Long currentStock, Long minimumStock, SupplierDto supplier, Category category) {
 		this.id = id;
 		this.product = product;
 		this.description = description;
@@ -33,8 +30,6 @@ public class Product {
 		this.image = image;
 		this.currentStock = currentStock;
 		this.minimumStock = minimumStock;
-		this.createdAt = createdAt;
-		this.updateAt = updateAt;
 		this.supplier = supplier;
 		this.category = category;
 	}
@@ -111,28 +106,12 @@ public class Product {
 		this.minimumStock = minimumStock;
 	}
 
-	public Timestamp getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Timestamp createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Timestamp getUpdateAt() {
-		return updateAt;
-	}
-
-	public void setUpdateAt(Timestamp updateAt) {
-		this.updateAt = updateAt;
-	}
-
-	public Supplier getSupplier() {
+	public SupplierDto getSupplier() {
 		return supplier;
 	}
 
 	public void setSupplier(Long id, String supplier, String taxId, String email) {
-		Supplier sup = new Supplier();
+		SupplierDto sup = new SupplierDto();
 		sup.setId(id);
 		sup.setSupplier(supplier);
 		sup.setTaxId(taxId);
@@ -149,14 +128,6 @@ public class Product {
 		cat.setId(id);
 		cat.setCategory(category);
 		this.category = cat;
-	}
-
-	@Override
-	public String toString() {
-		return "Product [id=" + id + ", product=" + product + ", description=" + description + ", costPrice="
-				+ costPrice + ", salePrice=" + salePrice + ", unitMeasure=" + unitMeasure + ", image=" + image
-				+ ", currentStock=" + currentStock + ", minimumStock=" + minimumStock + ", createdAt=" + createdAt
-				+ ", updateAt=" + updateAt + ", supplier=" + supplier + ", category=" + category + "]";
 	}
 
 }
