@@ -21,19 +21,19 @@ public class AccessLevelDaoImpl implements AccessLevelDao {
 
     @Override
     public List<AccessLevel> listAccessLevel() {
-        String listAll = "SELECT * FROM access_level ORDER BY access_level_id asc";
+        String listAll = "SELECT access_level_id, access_level FROM access_level ORDER BY access_level_id asc";
         return jdbcTemplate.query(listAll, new AccessLevelMapper());
     }
 
     @Override
     public List<AccessLevel> listByNameAccessLevel(String accessLevel) {
-        String listByName = "SELECT * FROM access_level WHERE access_level LIKE ?";
+        String listByName = "SELECT access_level_id, access_level FROM access_level WHERE access_level LIKE ?";
         return jdbcTemplate.query(listByName, new AccessLevelMapper(), "%" + accessLevel + "%");
     }
 
     @Override
     public AccessLevel searchByCodeAccessLevel(Integer id) {
-        String searchByCode = "SELECT * FROM access_level WHERE access_level_id = ?";
+        String searchByCode = "SELECT access_level_id, access_level FROM access_level WHERE access_level_id = ?";
         return jdbcTemplate.queryForObject(searchByCode, new AccessLevelMapper(), id);
     }
 
@@ -53,7 +53,7 @@ public class AccessLevelDaoImpl implements AccessLevelDao {
 
     @Override
     public AccessLevel deleteAccessLevel(Integer id) {
-        String selectAccess = "SELECT * FROM access_level WHERE access_level_id = ?";
+        String selectAccess = "SELECT access_level_id, access_level FROM access_level WHERE access_level_id = ?";
         AccessLevel toDelete = jdbcTemplate.queryForObject(selectAccess, new AccessLevelMapper(), id);
         if (toDelete != null) {
             String deleteAccessLevel = "DELETE FROM access_level WHERE access_level_id = ?";

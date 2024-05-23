@@ -21,42 +21,58 @@ public class CategoryDaoImpl implements CategoryDao {
 
 	@Override
 	public List<Category> listCategory() {
-		String listAll = "SELECT * FROM category ORDER BY category_id ASC";
+		String listAll = "SELECT category_id,\n"
+				+ "  category,\n"
+				+ "FROM category\n"
+				+ "ORDER BY category_id ASC";
 		return jdbcTemplate.query(listAll, new CategoryMapper());
 	}
 
 	@Override
 	public List<Category> listByNameCategory(String category) {
-		String listByName = "SELECT * FROM category WHERE category LIKE ?";
+		String listByName = "SELECT category_id,\n"
+				+ "  category,\n"
+				+ "FROM category\n"
+				+ "WHERE category LIKE ?";
 		return jdbcTemplate.query(listByName, new CategoryMapper(), "%" + category + "%");
 	}
 
 	@Override
 	public Category searchByCodeCategory(Integer id) {
-		String searchByCode = "SELECT * FROM category WHERE category_id = ?";
+		String searchByCode = "SELECT category_id,\n"
+				+ "  category,\n"
+				+ "FROM category\n"
+				+ "WHERE category_id = ?";
 		return jdbcTemplate.queryForObject(searchByCode, new CategoryMapper(), id);
 	}
 
 	@Override
 	public Category createCategory(Category category) {
-		String createCategory = "INSERT INTO category (category, created_at) VALUES(?, CURRENT_TIMESTAMP)";
-		jdbcTemplate.update(createCategory, category.getCategory(), category.getCreatedAt());
+		String createCategory = "INSERT INTO category (category)\n"
+				+ "VALUES(?)";
+		jdbcTemplate.update(createCategory, category.getCategory());
 		return category;
 	}
 
 	@Override
 	public Category updateCategory(Category category) {
-		String updateCategory = "UPDATE category SET category = ?, update_at = CURRENT_TIMESTAMP WHERE category_id = ?";
-		jdbcTemplate.update(updateCategory, category.getCategory(), category.getUpdateAt(), category.getId());
+		String updateCategory = "UPDATE category\n"
+				+ "SET category = ?,\n"
+				+ "WHERE category_id = ?";
+		jdbcTemplate.update(updateCategory, category.getCategory(), category.getId());
 		return category;
 	}
 
 	@Override
 	public Category deleteCategory(Long id) {
-		String selectCategory = "SELECT * FROM category WHERE category_id = ?";
+		String selectCategory = "SELECT category_id,\n"
+				+ "  category,\n"
+				+ "FROM category\n"
+				+ "WHERE category_id = ?";
 		Category toDelete = jdbcTemplate.queryForObject(selectCategory, new CategoryMapper(), id);
 		if (toDelete != null) {
-			String deleteUser = "DELETE FROM category WHERE category_id = ?";
+			String deleteUser = "DELETE FROM category\n"
+					+ "WHERE category_id = ?";
 			jdbcTemplate.update(deleteUser, id);
 			return toDelete;
 		}
