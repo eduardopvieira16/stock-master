@@ -25,7 +25,6 @@ public class Supplier {
 	public Supplier(Long id, String supplier, String taxId, String email, String phone, String celPhone, String cep,
 			String address, String numberAddress, String neighborhood, String city, String uf, Timestamp createdAt,
 			Timestamp updateAt) {
-		super();
 		this.id = id;
 		this.supplier = supplier;
 		this.taxId = taxId;

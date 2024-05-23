@@ -24,7 +24,6 @@ public class Product {
 	public Product(Long id, String product, String description, Double costPrice, Double salePrice, String unitMeasure,
 			String image, Long currentStock, Long minimumStock, Timestamp createdAt, Timestamp updateAt,
 			Supplier supplier, Category category) {
-		super();
 		this.id = id;
 		this.product = product;
 		this.description = description;

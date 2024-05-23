@@ -8,7 +8,7 @@ public class StockMovement {
 	private String movementType;
 	private String description;
 	private Long quantity;
-	private Timestamp createdAt;
+	private Timestamp movementDate;
 	private Category category;
 	private Supplier supplier;
 	private AccessLevel accessLevel;
@@ -17,14 +17,13 @@ public class StockMovement {
 	public StockMovement() {
 	}
 
-	public StockMovement(Long id, String movementType, String description, Long quantity, Timestamp createdAt,
+	public StockMovement(Long id, String movementType, String description, Long quantity, Timestamp movementDate,
 			Category category, Supplier supplier, AccessLevel accessLevel, User user) {
-		super();
 		this.id = id;
 		this.movementType = movementType;
 		this.description = description;
 		this.quantity = quantity;
-		this.createdAt = createdAt;
+		this.movementDate = movementDate;
 		this.category = category;
 		this.supplier = supplier;
 		this.accessLevel = accessLevel;
@@ -63,50 +62,65 @@ public class StockMovement {
 		this.quantity = quantity;
 	}
 
-	public Timestamp getCreatedAt() {
-		return createdAt;
+	public Timestamp getMovementDate() {
+		return movementDate;
 	}
 
-	public void setCreatedAt(Timestamp createdAt) {
-		this.createdAt = createdAt;
+	public void setMovementDate(Timestamp movementDate) {
+		this.movementDate = movementDate;
 	}
 
 	public Category getCategory() {
 		return category;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setCategory(Long id, String category) {
+		Category cat = new Category();
+		cat.setId(id);
+		cat.setCategory(category);
+		this.category = cat;
 	}
 
 	public Supplier getSupplier() {
 		return supplier;
 	}
 
-	public void setSupplier(Supplier supplier) {
-		this.supplier = supplier;
+	public void setSupplier(Long id, String supplier, String taxId, String email) {
+		Supplier sup = new Supplier();
+		sup.setId(id);
+		sup.setSupplier(supplier);
+		sup.setTaxId(taxId);
+		sup.setEmail(email);
+		this.supplier = sup;
 	}
 
 	public AccessLevel getAccessLevel() {
 		return accessLevel;
 	}
 
-	public void setAccessLevel(AccessLevel accessLevel) {
-		this.accessLevel = accessLevel;
+	public void setAccessLevel(Integer id, String access) {
+		AccessLevel al = new AccessLevel();
+		al.setId(id);
+		al.setLevel(access);
+		this.accessLevel = al;
 	}
 
 	public User getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(Long id, String name, String email) {
+		User us = new User();
+		us.setId(id);
+		us.setName(name);
+		us.setEmail(email);
+		this.user = us;
 	}
 
 	@Override
 	public String toString() {
 		return "StockMovement [id=" + id + ", movementType=" + movementType + ", description=" + description
-				+ ", quantity=" + quantity + ", createdAt=" + createdAt + ", category=" + category + ", supplier="
+				+ ", quantity=" + quantity + ", movementDate=" + movementDate + ", category=" + category + ", supplier="
 				+ supplier + ", accessLevel=" + accessLevel + ", user=" + user + "]";
 	}
 }
