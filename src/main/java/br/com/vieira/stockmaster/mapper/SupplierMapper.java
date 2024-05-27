@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.RowMapper;
 import br.com.vieira.stockmaster.model.Supplier;
 
 public class SupplierMapper implements RowMapper<Supplier> {
-
 	@Override
 	public Supplier mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Supplier supplier = new Supplier();

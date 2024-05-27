@@ -1,7 +1,6 @@
 package br.com.vieira.stockmaster.model;
 
 public class AccessLevel {
-
 	private Integer id;
 	private String level;
 

@@ -9,7 +9,6 @@ import br.com.vieira.stockmaster.model.AccessLevel;
 
 @Service
 public class AccessLevelServiceImpl implements AccessLevelService {
-
     private final AccessLevelDao accessLevelDao;
 
     public AccessLevelServiceImpl(AccessLevelDao accessLevelDao) {

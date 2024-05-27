@@ -12,7 +12,6 @@ import br.com.vieira.stockmaster.model.Product;
 
 @Repository
 public class ProductDaoImpl implements ProductDao {
-
 	private final JdbcTemplate jdbcTemplate;
 
 	public ProductDaoImpl(DataSource dataSource) {

@@ -1,7 +1,6 @@
 package br.com.vieira.stockmaster.model;
 
 public class Supplier {
-
 	private Long id;
 	private String supplier;
 	private String taxId; // Informar o CNPJ or CPF

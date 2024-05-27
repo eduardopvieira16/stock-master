@@ -1,7 +1,6 @@
 package br.com.vieira.stockmaster.model;
 
 public class User {
-
 	private Long id;
 	private String name;
 	private String email;

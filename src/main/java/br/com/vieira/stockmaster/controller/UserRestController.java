@@ -18,7 +18,6 @@ import br.com.vieira.stockmaster.service.UserService;
 @RestController
 @RequestMapping(path = "/v1/user")
 public class UserRestController {
- 
     private final UserService userService;
 
     public UserRestController(UserService userService) {

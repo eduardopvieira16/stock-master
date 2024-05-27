@@ -3,7 +3,6 @@ package br.com.vieira.stockmaster.model;
 import java.sql.Timestamp;
 
 public class StockMovement {
-
 	private Long id;
 	private String movementType;
 	private String description;

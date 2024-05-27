@@ -18,7 +18,6 @@ import br.com.vieira.stockmaster.service.ProductService;
 @RestController
 @RequestMapping(path = "/v1/product")
 public class ProductRestController {
- 
     private final ProductService productService;
 
     public ProductRestController(ProductService productService) {
