@@ -18,7 +18,6 @@ import br.com.vieira.stockmaster.service.AccessLevelService;
 @RestController
 @RequestMapping(path = "/v1/access-level")
 public class AccessLevelRestController {
-
     private final AccessLevelService accessLevelService;
 
     public AccessLevelRestController(AccessLevelService accessLevelService) {

@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.RowMapper;
 import br.com.vieira.stockmaster.model.Category;
 
 public class CategoryMapper implements RowMapper<Category> {
-
 	@Override
 	public Category mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Category category = new Category();

@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.RowMapper;
 import br.com.vieira.stockmaster.model.AccessLevel;
 
 public class AccessLevelMapper implements RowMapper<AccessLevel> {
-
     @Override
     public AccessLevel mapRow(ResultSet rs, int rowNum) throws SQLException {
         AccessLevel accessLevel = new AccessLevel();

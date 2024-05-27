@@ -12,7 +12,6 @@ import br.com.vieira.stockmaster.model.AccessLevel;
 
 @Repository
 public class AccessLevelDaoImpl implements AccessLevelDao {
-
     private final JdbcTemplate jdbcTemplate;
 
     public AccessLevelDaoImpl(DataSource dataSource) {

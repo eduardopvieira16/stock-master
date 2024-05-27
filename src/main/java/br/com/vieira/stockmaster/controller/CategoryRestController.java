@@ -18,7 +18,6 @@ import br.com.vieira.stockmaster.service.CategoryService;
 @RestController
 @RequestMapping(path = "/v1/category")
 public class CategoryRestController {
- 
     private final CategoryService categoryService;
 
     public CategoryRestController(CategoryService categoryService) {

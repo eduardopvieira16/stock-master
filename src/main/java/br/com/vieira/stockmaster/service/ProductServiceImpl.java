@@ -9,7 +9,6 @@ import br.com.vieira.stockmaster.model.Product;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-
 	private final ProductDao productDao;
 
 	public ProductServiceImpl(ProductDao productDao) {

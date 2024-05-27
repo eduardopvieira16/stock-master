@@ -3,7 +3,6 @@ package br.com.vieira.stockmaster.model;
 import br.com.vieira.stockmaster.model.dto.SupplierDto;
 
 public class Product {
-
 	private Long id;
 	private String product;
 	private String description;

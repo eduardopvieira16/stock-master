@@ -9,7 +9,6 @@ import br.com.vieira.stockmaster.model.Category;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
-
 	private final CategoryDao categoryDao;
 
 	public CategoryServiceImpl(CategoryDao categoryDao) {
